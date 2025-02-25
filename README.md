@@ -52,14 +52,14 @@ sudo nano /home/USER/Downloads/vmware-host-modules-workstation-17.5.1/vmnet-only
 ```
 
 3) Locate the following lines:
-
+```bash
 #define dev_lock_list()    read_lock(&dev_base_lock)
 #define dev_unlock_list()  read_unlock(&dev_base_lock)
 
 4) Replace them with: 
 #define dev_lock_list()    mutex_lock(&netdev_chain_mutex)
 #define dev_unlock_list()  mutex_unlock(&netdev_chain_mutex)
-
+```
 Save the file
 
 3️⃣ Rebuild VMware Kernel Modules
